@@ -10,8 +10,10 @@ class Node {
 	appendChild(node) {
 		if(this.left == null){
 			this.left = node;
+			this.left.parent = this;
 		}else if(this.right == null){
 			this.right = node;
+			this.right.parent = this;
 		}else{
 			return;
 		}
@@ -19,8 +21,10 @@ class Node {
 
 	removeChild(node) {
 		if(this.left == node){
+			this.left.parent = null;
 			this.left = null;
 		}else if(this.right == node){
+			this.right.parent = null;
 			this.right = null;
 		}else{
 			throw ('Error: Passed node is not a child of this node.');
