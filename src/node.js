@@ -18,11 +18,20 @@ class Node {
 	}
 
 	removeChild(node) {
-
+		if(this.left == node){
+			this.left = null;
+		}else if(this.right == node){
+			this.right = null;
+		}else{
+			throw ('Error: Passed node is not a child of this node.');
+		}
 	}
 
 	remove() {
-
+		if(this.parent == null){
+			return;
+		}
+		this.parent.removeChild(this);
 	}
 
 	swapWithParent() {
