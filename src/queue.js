@@ -11,7 +11,7 @@ class PriorityQueue {
 	}
 
 	push(data, priority) {
-
+		this.heap.push(data, priority);
 	}
 
 	shift() {
@@ -23,7 +23,7 @@ class PriorityQueue {
 	}
 
 	isEmpty() {
-		
+
 	}
 }
 
