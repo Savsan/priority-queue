@@ -37,6 +37,7 @@ class MaxHeap {
 	clear() {
 		this.root = null;
 		this.parentNodes = [];
+		this.heapSize = 0;
 	}
 
 	insertNode(node) {
