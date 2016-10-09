@@ -26,7 +26,7 @@ class MaxHeap {
 	}
 
 	size() {
-
+		return this.heapSize;
 	}
 
 	isEmpty() {
@@ -54,7 +54,24 @@ class MaxHeap {
 	}
 
 	shiftNodeUp(node) {
+		if(node.parent == null){
+			this.root = node;
+			return;
+		}else if(node.parent != null && node.parent.priority < node.priority){
 
+			var nodeIndex = this.parentNodes.indexOf(node);
+			var parentIndex = this.parentNodes.indexOf(node.parent);
+
+			if(parentIndex > -1){
+				this.parentNodes[parentIndex] = node;
+			}
+			if(nodeIndex > -1) {
+				this.parentNodes[nodeIndex] = node.parent;
+			}
+
+			node.swapWithParent();
+			this.shiftNodeUp(node);
+		}
 	}
 
 	shiftNodeDown(node) {
