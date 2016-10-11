@@ -78,7 +78,35 @@ class MaxHeap {
 	}
 
 	shiftNodeDown(node) {
+		var parentIndex;
+		var childIndex;
+		var childNodeToSwap;
+		if(node.left != null){
+			childNodeToSwap = node.left;
+			if(node.right != null){
+				if(childNodeToSwap.priority <= node.right.priority){
+					childNodeToSwap = node.right;
+				}
+			}
+			if(node.priority < childNodeToSwap.priority){
+				if(this.root == node){
+					this.root = childNodeToSwap;
+				}
 
+				parentIndex = this.parentNodes.indexOf(node);
+				childIndex = this.parentNodes.indexOf(childNodeToSwap);
+
+				if(parentIndex > -1){
+					this.parentNodes[parentIndex] = childNodeToSwap;
+				}
+				if(childIndex > -1) {
+					this.parentNodes[childIndex] = node;
+				}
+
+				childNodeToSwap.swapWithParent();
+				this.shiftNodeDown(node);
+			}
+		}
 	}
 }
 
