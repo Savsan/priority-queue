@@ -14,7 +14,14 @@ class MaxHeap {
 	}
 
 	pop() {
+		if(this.isEmpty()){
+			return;
+		}
 
+		var detachedRoot = this.detachRoot();
+		this.restoreRootFromLastInsertedNode(detachedRoot);
+		this.shiftNodeDown(this.root);
+		return detachedRoot.data;
 	}
 
 	detachRoot() {
