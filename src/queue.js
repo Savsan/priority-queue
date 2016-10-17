@@ -11,19 +11,28 @@ class PriorityQueue {
 	}
 
 	push(data, priority) {
-		this.heap.push(data, priority);
+		var maxSize = this.maxSize;
+		if(this.size() < this.maxSize){
+			this.heap.push(data, priority);
+		}else{
+			throw "Can't add element to queue. The queue has max size (" + maxSize + " elements)";
+		}
 	}
 
 	shift() {
-
+		if(!this.isEmpty()){
+			return this.heap.pop();
+		}else {
+			throw "Shift operation wasn't done. The queue is empty.";
+		}
 	}
 
 	size() {
-
+		return this.heap.size();
 	}
 
 	isEmpty() {
-
+		return this.heap.isEmpty();
 	}
 }
 
